@@ -35,7 +35,7 @@ class Drummer(Musician):
         print('"Spontaneously Combusts"')
         
 class Band(object):
-    def hire(self):
+    def hire():
         for people in members:
             members.append(input())
             return members
