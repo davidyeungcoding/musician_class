@@ -1,5 +1,3 @@
-members = ["Tom", "Mark", "Travis"]
-
 class Musician(object):
     def __init__(self, sounds):
         self.sounds = sounds
@@ -35,18 +33,25 @@ class Drummer(Musician):
         print('"Spontaneously Combusts"')
         
 class Band(object):
-    def hire(self):
-        for people in members:
-            members.append(input())
-            return members
+    def __init__(self, members):
+        self.members = members
+    
+    def hire(self, member):
+        self.members.append(member)
         
-    def fire(self):
-        for people in members:
-            members.remove(input())
-            return members
+    def fire(self, member):
+        self.members.remove(member)
         
-    def play_music(self):
-        Drummer.count(self)
-        # Drummer.solo(3)
-        # Guitarist.solo(3)
-        # Bassist.solo(3)
+    def play_music(self, length):
+        for member in self.members:
+            if isinstance(member, Drummer):
+                member.count()
+        for memeber in self.members:
+            memeber.solo(length)
+            
+if __name__ == "__main__":
+    Travis = Drummer()
+    Mark = Bassist()
+    Tom = Guitarist()
+    Blink182 = Band([Mark, Tom, Travis])
+    Blink182.play_music(3)
